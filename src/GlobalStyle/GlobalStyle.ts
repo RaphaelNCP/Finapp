@@ -7,8 +7,16 @@ export const Container = styled.View`
 `;
 
 export const Input = styled.TextInput`
-  border: 1px solid #1c6758;
+  border: 2px solid #1c6758;
   color: #1c6758;
   border-radius: 10px;
   padding: 10px;
+`;
+
+export const Button = styled.TouchableOpacity`
+  background-color: #d6cda4;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 2px solid #1c6758;
 `;
