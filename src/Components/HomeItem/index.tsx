@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { BoldText, NormalText } from "../RootComponents/Texts/Texts";
 import { styles } from "./HomeItem";
 import { HomeItemProps } from "../../Types/Types";

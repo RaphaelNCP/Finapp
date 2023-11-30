@@ -3,11 +3,14 @@ import { Text, View, Modal, TouchableOpacity } from "react-native";
 import { ModalProps } from "../../Types/Types";
 import { Octicons } from "@expo/vector-icons";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { BoldText, NormalText } from "../RootComponents/Texts/Texts";
 import { Button, Category } from "../../GlobalStyle/GlobalStyle";
 import { styles } from "./Modal";
+import {
+  BoldText,
+  NormalText,
+} from "../../Components/RootComponents/Texts/Texts";
 
-export const Modals = ({ visible, setVisible, id, data }: ModalProps) => {
+export const ModalHistory = ({ visible, setVisible, id, data }: ModalProps) => {
   const { getItem, setItem } = useAsyncStorage("@finapp:itens");
   const [foundObject, setFoundObject] = useState<any | undefined>(undefined);
 

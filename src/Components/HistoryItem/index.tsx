@@ -4,9 +4,10 @@ import { AntDesign, Octicons } from "@expo/vector-icons";
 import { Category, HistoryItens } from "../../GlobalStyle/GlobalStyle";
 import { styles } from "./HistoryItem";
 import { HistoryItemProps } from "../../Types/Types";
-import { Modals } from "../Modal";
+
 import { useState } from "react";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { ModalHistory } from "../../Modals/ModalHistory";
 
 export const HistoryItem = ({
   value,
@@ -46,7 +47,7 @@ export const HistoryItem = ({
           <LightText as="Ver mais" align="center" size={12} />
         </TouchableOpacity>
       </View>
-      <Modals
+      <ModalHistory
         id={id}
         visible={modalVisible}
         setVisible={setModalVisible}
