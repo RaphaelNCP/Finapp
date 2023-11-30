@@ -16,12 +16,19 @@ export const ModalHistory = ({ visible, setVisible, id, data }: ModalProps) => {
 
   useEffect(() => {
     const findObjectById = async () => {
-      const found = await data.find((obj: { id: string }) => obj.id === id);
+      const found = await data!.find((obj: { id: string }) => obj.id === id);
       setFoundObject(found);
     };
 
     findObjectById();
   }, [id, data]);
+
+  const isGain =
+    (foundObject && foundObject.category === "Salario") ||
+    (foundObject && foundObject.category === "Investimento") ||
+    (foundObject && foundObject.category === "Outros Ganhos") ||
+    (foundObject && foundObject.category === "Presentes") ||
+    (foundObject && foundObject.category === "Doações");
 
   return (
     <View>

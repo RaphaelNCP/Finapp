@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Modal, Text, TouchableOpacity, View } from "react-native";
 import { Container } from "../../GlobalStyle/GlobalStyle";
 import {
   BoldText,
@@ -8,8 +8,12 @@ import {
 import { HomeItem } from "../../Components/HomeItem";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { styles } from "./Home";
+import { ModalHome } from "../../Modals/ModalHome";
+import { useState } from "react";
 
 export const Home = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <Container style={{ justifyContent: "space-around" }}>
       <View>
@@ -18,7 +22,7 @@ export const Home = () => {
       </View>
       <View>
         <View style={styles.description}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
             <MaterialCommunityIcons
               style={{ marginRight: 8 }}
               name="information"
@@ -28,11 +32,12 @@ export const Home = () => {
           </TouchableOpacity>
           <BoldText as="Relação" size={30} align="left" />
         </View>
-        <HomeItem title="Gastos essênciais" value="0.00" />
-        <HomeItem title="Gastos de lazer" value="0.00" />
+        <HomeItem title="Essenciais" value="0.00" />
+        <HomeItem title="Lazer" value="0.00" />
         <HomeItem title="Renda" value="0.00" />
-        <HomeItem title="Ganhos bônus" value="0.00" />
+        <HomeItem title="Bônus" value="0.00" />
       </View>
+      <ModalHome setVisible={setModalVisible} visible={modalVisible} />
     </Container>
   );
 };

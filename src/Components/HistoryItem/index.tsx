@@ -6,7 +6,6 @@ import { styles } from "./HistoryItem";
 import { HistoryItemProps } from "../../Types/Types";
 
 import { useState } from "react";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { ModalHistory } from "../../Modals/ModalHistory";
 
 export const HistoryItem = ({
@@ -16,7 +15,13 @@ export const HistoryItem = ({
   data,
 }: HistoryItemProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const {} = useAsyncStorage("@finapp:itens");
+
+  const isGain =
+    category === "Salario" ||
+    category === "Investimento" ||
+    category === "Outros Ganhos" ||
+    category === "Presentes" ||
+    category === "Doações";
 
   return (
     <HistoryItens>
@@ -27,13 +32,7 @@ export const HistoryItem = ({
             <Octicons
               name="dot-fill"
               size={24}
-              color={
-                category === "Salario" ||
-                category === "Investimento" ||
-                category === "Outros"
-                  ? "green"
-                  : "#cf0404"
-              }
+              color={isGain ? "green" : "#cf0404"}
               style={{ marginRight: 10 }}
             />
             <NormalText as={category} align="left" size={16} />
