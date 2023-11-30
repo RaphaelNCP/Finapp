@@ -1,14 +1,19 @@
 import { TouchableOpacity, View } from "react-native";
 import { BoldText, LightText, NormalText } from "../RootComponents/Texts/Texts";
 import { AntDesign, Octicons } from "@expo/vector-icons";
-import { HistoryItens } from "../../GlobalStyle/GlobalStyle";
+import { Category, HistoryItens } from "../../GlobalStyle/GlobalStyle";
 import { styles } from "./HistoryItem";
 import { HistoryItemProps } from "../../Types/Types";
 import { Modals } from "../Modal";
 import { useState } from "react";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
-export const HistoryItem = ({ value, category, id }: HistoryItemProps) => {
+export const HistoryItem = ({
+  value,
+  category,
+  id,
+  data,
+}: HistoryItemProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const {} = useAsyncStorage("@finapp:itens");
 
@@ -17,7 +22,7 @@ export const HistoryItem = ({ value, category, id }: HistoryItemProps) => {
       <View style={styles.itemContainer}>
         <View>
           <BoldText as={value} align="left" size={24} />
-          <View style={styles.category}>
+          <Category>
             <Octicons
               name="dot-fill"
               size={24}
@@ -31,7 +36,7 @@ export const HistoryItem = ({ value, category, id }: HistoryItemProps) => {
               style={{ marginRight: 10 }}
             />
             <NormalText as={category} align="left" size={16} />
-          </View>
+          </Category>
         </View>
         <TouchableOpacity
           style={styles.infoButton}
@@ -41,7 +46,12 @@ export const HistoryItem = ({ value, category, id }: HistoryItemProps) => {
           <LightText as="Ver mais" align="center" size={12} />
         </TouchableOpacity>
       </View>
-      <Modals id={id} visible={modalVisible} setVisible={setModalVisible} />
+      <Modals
+        id={id}
+        visible={modalVisible}
+        setVisible={setModalVisible}
+        data={data}
+      />
     </HistoryItens>
   );
 };

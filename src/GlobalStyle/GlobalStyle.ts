@@ -28,3 +28,8 @@ export const HistoryItens = styled.View`
   margin-top: 20px;
   border: 2px solid #1c6758;
 `;
+
+export const Category = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;

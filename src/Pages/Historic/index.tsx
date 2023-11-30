@@ -26,19 +26,18 @@ export const Historic = () => {
   return (
     <Container>
       <Title as="Histórico" size={32} align="center" />
-      <ScrollView>
-        <FlatList
-          data={data}
-          renderItem={({ item }) => (
-            <HistoryItem
-              id={item.id}
-              value={`R$ ${item.value}`}
-              category={item.category}
-            />
-          )}
-          keyExtractor={(item) => item.id}
-        />
-      </ScrollView>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <HistoryItem
+            id={item.id}
+            value={`R$ ${item.value}`}
+            category={item.category}
+            data={data}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </Container>
   );
 };

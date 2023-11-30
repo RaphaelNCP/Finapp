@@ -13,8 +13,4 @@ export const styles = StyleSheet.create({
     width: 80,
     alignItems: "center",
   },
-  category: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
 });

@@ -37,12 +37,14 @@ export type HistoryItemProps = {
   value: string;
   category: string;
   id: string;
+  data: CardProps[];
 };
 
 export type ModalProps = {
   visible: boolean;
   setVisible: React.Dispatch<SetStateAction<boolean>>;
   id: string;
+  data: CardProps[];
 };
 
 export type Category = {

@@ -1,54 +1,75 @@
-import React from "react";
-import { Text, View, Modal, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View, Modal, TouchableOpacity } from "react-native";
 import { ModalProps } from "../../Types/Types";
+import { Octicons } from "@expo/vector-icons";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { BoldText, NormalText } from "../RootComponents/Texts/Texts";
+import { Button, Category } from "../../GlobalStyle/GlobalStyle";
+import { styles } from "./Modal";
 
-export const Modals = ({ visible, setVisible, id }: ModalProps) => {
+export const Modals = ({ visible, setVisible, id, data }: ModalProps) => {
+  const { getItem, setItem } = useAsyncStorage("@finapp:itens");
+  const [foundObject, setFoundObject] = useState<any | undefined>(undefined);
+
+  useEffect(() => {
+    const findObjectById = async () => {
+      const found = await data.find((obj: { id: string }) => obj.id === id);
+      setFoundObject(found);
+    };
+
+    findObjectById();
+  }, [id, data]);
+
   return (
-    <View style={styles.container}>
-      <Modal transparent={true} animationType="slide" visible={visible}>
+    <View>
+      <Modal transparent={true} animationType="fade" visible={visible}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalText}>Modal</Text>
-            <TouchableOpacity
+            <BoldText as="Detalhes" size={30} align="center" />
+            <View style={styles.value}>
+              <NormalText
+                as={`Valor: R$ ${foundObject ? foundObject.value : "N/A"}`}
+                size={20}
+                align="left"
+              />
+              <Category>
+                <Octicons
+                  name="dot-fill"
+                  size={24}
+                  color={
+                    (foundObject && foundObject.category === "Salario") ||
+                    (foundObject && foundObject.category === "Investimento") ||
+                    (foundObject && foundObject.category === "Outros")
+                      ? "green"
+                      : "#cf0404"
+                  }
+                  style={{ marginRight: 10 }}
+                />
+                <NormalText
+                  as={foundObject ? foundObject.category : "N/A"}
+                  size={20}
+                  align="left"
+                />
+              </Category>
+            </View>
+            <View>
+              <BoldText as="Descrição:" size={20} align="left" />
+              <NormalText
+                as={foundObject ? foundObject.description : "N/A"}
+                size={20}
+                align="left"
+              />
+            </View>
+            <Button
               onPress={() => {
                 setVisible(false);
               }}
             >
-              <Text style={styles.closeButton}>Fechar</Text>
-            </TouchableOpacity>
+              <NormalText as="Fechar" size={20} align="center" />
+            </Button>
           </View>
         </View>
       </Modal>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00000058",
-  },
-  modalContent: {
-    width: 300,
-    padding: 20,
-    backgroundColor: "#EEF2E6",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  modalText: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  closeButton: {
-    fontSize: 16,
-    color: "blue",
-    marginTop: 10,
-  },
-});
