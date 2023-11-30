@@ -1,4 +1,4 @@
-import { ToastAndroid, View } from "react-native";
+import { View } from "react-native";
 import { BoldText, Title } from "../RootComponents/Texts/Texts";
 import { Button, Input } from "../../GlobalStyle/GlobalStyle";
 import { SelectList } from "react-native-dropdown-select-list";
@@ -6,25 +6,52 @@ import { AddsProps } from "../../Types/Types";
 import { styles } from "./Adds";
 import { useState } from "react";
 import uuid from "react-native-uuid";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import Toast from "react-native-toast-message";
 
 export const Adds = ({ mock, title }: AddsProps) => {
   const [selected, setSelected] = useState("");
   const [value, setValue] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const { getItem, setItem } = useAsyncStorage("@finapp:itens");
 
-  const handleAdd = () => {
-    ToastAndroid.show("Adicionado com sucesso!", ToastAndroid.BOTTOM);
-    const id = uuid.v4();
-    const newData = {
-      id,
-      value: value,
-      description: description,
-      category: selected,
-    };
-    console.log(newData);
-    setValue("");
-    setDescription("");
+  const handleAdd = async () => {
+    try {
+      const id = uuid.v4();
+      const newData = {
+        id,
+        value: value,
+        description: description,
+        category: selected,
+      };
+
+      const res = await getItem();
+      const previousData = res ? JSON.parse(res) : [];
+      const data = [...previousData, newData];
+
+      await setItem(JSON.stringify(data));
+
+      Toast.show({
+        type: "success",
+        position: "top",
+        text1: "Sucesso",
+        text2: "Item adicionado com sucesso",
+        visibilityTime: 2000,
+      });
+      console.log(newData);
+      setValue("");
+      setDescription("");
+    } catch (error) {
+      console.log(error);
+      Toast.show({
+        type: "error",
+        position: "top",
+        text1: "Erro",
+        text2: "Erro ao adicionar item",
+        visibilityTime: 2000,
+      });
+    }
   };
 
   return (

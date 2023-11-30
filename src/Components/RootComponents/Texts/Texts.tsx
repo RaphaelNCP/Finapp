@@ -99,3 +99,29 @@ export const Title = ({ as, size, align }: TextProps) => {
     </Text>
   );
 };
+
+export const LongText = ({ as, size, align }: TextProps) => {
+  const [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return (
+    <Text
+      numberOfLines={1}
+      ellipsizeMode="tail"
+      style={{
+        fontFamily: "Nunito_400Regular",
+        fontSize: size,
+        color: "#1C6758",
+        textAlign: align,
+        width: "50%",
+      }}
+    >
+      {as}
+    </Text>
+  );
+};

@@ -21,6 +21,18 @@ export type AddsProps = {
   mock: Category[];
 };
 
+export type CardProps = {
+  id: string;
+  value: string;
+  description: string;
+  category: string;
+};
+
+export type CardListProps = {
+  cards: CardProps[];
+  onPress: () => void;
+};
+
 export type Category = {
   key: string;
   value: string;

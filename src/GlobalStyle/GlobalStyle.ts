@@ -20,3 +20,11 @@ export const Button = styled.TouchableOpacity`
   margin-top: 20px;
   border: 2px solid #1c6758;
 `;
+
+export const HistoryItem = styled.View`
+  background-color: #d6cda4;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 2px solid #1c6758;
+`;

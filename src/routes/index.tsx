@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { Add } from "../Pages/Add";
 import { Home } from "../Pages/Home/Index";
-import { Right } from "../Pages/Right";
+import { Historic } from "../Pages/Historic";
 import { Feather } from "@expo/vector-icons";
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -57,7 +57,7 @@ export const Routes = () => {
         />
         <Screen
           name="Histórico"
-          component={Right}
+          component={Historic}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="repeat" size={size} color={color} />
