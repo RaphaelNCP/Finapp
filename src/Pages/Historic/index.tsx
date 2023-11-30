@@ -30,7 +30,11 @@ export const Historic = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <HistoryItem value={`R$ ${item.value}`} category={item.category} />
+            <HistoryItem
+              id={item.id}
+              value={`R$ ${item.value}`}
+              category={item.category}
+            />
           )}
           keyExtractor={(item) => item.id}
         />
