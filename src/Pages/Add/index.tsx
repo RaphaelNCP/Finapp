@@ -10,8 +10,6 @@ import { dataExpense, dataGain } from "../../Mocks/Mocks";
 
 export const Add = () => {
   const [pressed, setPressed] = useState<string>("Ganhos");
-  const [selectedGain, setSelectedGain] = useState("");
-  const [selectedExpense, setSelectedExpense] = useState("");
 
   return (
     <Container>

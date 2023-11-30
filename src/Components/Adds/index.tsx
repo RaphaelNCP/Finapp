@@ -6,7 +6,7 @@ import { AddsProps } from "../../Types/Types";
 import { styles } from "./Adds";
 import { useState } from "react";
 
-export const Adds = ({ mock, title }: AddsProps) => {
+export const Adds = ({ key, mock, title }: AddsProps) => {
   const [selected, setSelected] = useState("");
 
   return (
@@ -27,6 +27,7 @@ export const Adds = ({ mock, title }: AddsProps) => {
       <View style={styles.inputView}>
         <BoldText as="Selecione a categoria:" size={20} align="left" />
         <SelectList
+          key={key}
           setSelected={(value: any) => setSelected(value)}
           data={mock}
           save="value"

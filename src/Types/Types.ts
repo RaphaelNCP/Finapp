@@ -17,6 +17,7 @@ export type TabOptionsProps = {
 };
 
 export type AddsProps = {
+  key: number;
   title: string;
   mock: Category[];
 };
