@@ -33,6 +33,11 @@ export type CardListProps = {
   onPress: () => void;
 };
 
+export type HistoryItemProps = {
+  value: string;
+  category: string;
+};
+
 export type Category = {
   key: string;
   value: string;
