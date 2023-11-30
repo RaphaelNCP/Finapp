@@ -1,12 +1,11 @@
-import { ScrollView, View } from "react-native";
-import { Button, Container, Input } from "../../GlobalStyle/GlobalStyle";
-import { BoldText, Title } from "../../Components/RootComponents/Texts/Texts";
-import { styles } from "./Add";
+import { ScrollView } from "react-native";
+import { Container } from "../../GlobalStyle/GlobalStyle";
+
 import { TabOptions } from "../../Components/TabOptions";
-import { useEffect, useState } from "react";
-import { SelectList } from "react-native-dropdown-select-list";
+
 import { Adds } from "../../Components/Adds";
 import { dataExpense, dataGain } from "../../Mocks/Mocks";
+import { useState } from "react";
 
 export const Add = () => {
   const [pressed, setPressed] = useState<string>("Ganhos");
