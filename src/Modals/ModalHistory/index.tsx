@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Text, View, Modal, TouchableOpacity } from "react-native";
 import { ModalProps } from "../../Types/Types";
 import { Octicons } from "@expo/vector-icons";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { Button, Category } from "../../GlobalStyle/GlobalStyle";
 import { styles } from "./Modal";
 import {
@@ -11,7 +10,6 @@ import {
 } from "../../Components/RootComponents/Texts/Texts";
 
 export const ModalHistory = ({ visible, setVisible, id, data }: ModalProps) => {
-  const { getItem, setItem } = useAsyncStorage("@finapp:itens");
   const [foundObject, setFoundObject] = useState<any | undefined>(undefined);
 
   useEffect(() => {
@@ -46,13 +44,7 @@ export const ModalHistory = ({ visible, setVisible, id, data }: ModalProps) => {
                 <Octicons
                   name="dot-fill"
                   size={24}
-                  color={
-                    (foundObject && foundObject.category === "Salario") ||
-                    (foundObject && foundObject.category === "Investimento") ||
-                    (foundObject && foundObject.category === "Outros")
-                      ? "green"
-                      : "#cf0404"
-                  }
+                  color={isGain ? "green" : "#cf0404"}
                   style={{ marginRight: 10 }}
                 />
                 <NormalText

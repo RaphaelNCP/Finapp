@@ -13,7 +13,7 @@ export const ModalHome = ({ visible, setVisible }: ModalProps) => {
       <Modal transparent={true} animationType="fade" visible={visible}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <View>
+            <View style={styles.itens}>
               <BoldText as="Essenciais:" size={20} align="left" />
               <NormalText
                 as="Alimentação - Transporte - Saúde - Educação - Contas"
@@ -21,23 +21,15 @@ export const ModalHome = ({ visible, setVisible }: ModalProps) => {
                 align="left"
               />
             </View>
-            <View>
+            <View style={styles.itens}>
               <BoldText as="Lazer:" size={20} align="left" />
-              <NormalText
-                as="Viagens - Restaurantes - Festas - Compras"
-                size={16}
-                align="left"
-              />
+              <NormalText as="Lazer" size={16} align="left" />
             </View>
-            <View>
+            <View style={styles.itens}>
               <BoldText as="Renda:" size={20} align="left" />
-              <NormalText
-                as="Salário - Investimentos - Outros"
-                size={16}
-                align="left"
-              />
+              <NormalText as="Salário - Investimentos" size={16} align="left" />
             </View>
-            <View>
+            <View style={styles.itens}>
               <BoldText as="Bônus:" size={20} align="left" />
               <NormalText
                 as="Presentes - Doações - Outros"
