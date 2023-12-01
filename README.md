@@ -18,5 +18,5 @@ Um aplicativo de controle de finanças, onde você pode adicionar seu ganhos e g
 
 ## Video
 
-[Video do App](https://github.com/RaphaelNCP/Finapp/assets/112732487/6a016681-32f6-4843-a86d-7b136b38f784)
+https://github.com/RaphaelNCP/Finapp/assets/112732487/d508f0e8-d385-4f94-a425-dd5cb0d8a1af
 
