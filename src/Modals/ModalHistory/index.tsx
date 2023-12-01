@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, Modal, TouchableOpacity } from "react-native";
+import { View, Modal } from "react-native";
 import { ModalProps } from "../../Types/Types";
 import { Octicons } from "@expo/vector-icons";
 import { Button, Category } from "../../GlobalStyle/GlobalStyle";

@@ -1,10 +1,6 @@
-import { Modal, Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Container } from "../../GlobalStyle/GlobalStyle";
-import {
-  BoldText,
-  NormalText,
-  Title,
-} from "../../Components/RootComponents/Texts/Texts";
+import { BoldText, Title } from "../../Components/RootComponents/Texts/Texts";
 import { HomeItem } from "../../Components/HomeItem";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { styles } from "./Home";
