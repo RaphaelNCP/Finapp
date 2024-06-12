@@ -13,4 +13,11 @@ export const styles = StyleSheet.create({
     width: 80,
     alignItems: "center",
   },
+  deleteButton: {
+    padding: 10,
+    borderLeftWidth: 1,
+    borderColor: "#000",
+    width: 80,
+    alignItems: "center",
+  }
 });

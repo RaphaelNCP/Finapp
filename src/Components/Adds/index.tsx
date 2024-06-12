@@ -18,6 +18,16 @@ export const Adds = ({ mock, title }: AddsProps) => {
 
   const handleAdd = async () => {
     try {
+      if (value === "" || description === "" || selected === "") {
+        Toast.show({
+          type: "error",
+          position: "top",
+          text1: "Erro",
+          text2: "Preencha todos os campos",
+          visibilityTime: 2000,
+        });
+        return;
+      }
       const id = uuid.v4();
       const newData = {
         id,

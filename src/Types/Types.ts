@@ -38,6 +38,7 @@ export type HistoryItemProps = {
   category: string;
   id: string;
   data: CardProps[];
+  onDelete: (id: string) => void;
 };
 
 export type ModalProps = {
